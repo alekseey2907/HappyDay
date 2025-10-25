@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build and Start Dev Server",
+			"type": "shell",
+			"command": "Remove-Item -Path '.next' -Recurse -Force -ErrorAction SilentlyContinue; npm run dev",
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
