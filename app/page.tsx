@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Navigation from './Navigation';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import GalleryPage from './GalleryPage';
+import WishesPage from './WishesPage';
+import SurprisePage from './SurprisePage';
 
 interface Confetti {
   id: number;
@@ -17,6 +23,7 @@ export default function Home() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [showFireworks, setShowFireworks] = useState(false);
   const [fireworks, setFireworks] = useState<Confetti[]>([]);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const photos = [
     '/photo/photo_2025-08-06_21-57-45.jpg',
@@ -25,7 +32,9 @@ export default function Home() {
     '/photo/photo_2025-10-25_18-59-37.jpg',
     '/photo/photo_2025-10-11_17-28-43.jpg',
     '/photo/photo_2025-10-21_09-46-46.jpg',
-    
+    '/photo/photo_2025-03-12_11-05-40.jpg',
+    '/photo/photo_2025-07-16_19-26-20.jpg',
+    '/photo/photo_2025-10-22_22-48-58.jpg',
     '/photo/VuAJAzQejfMx7j5vAL0NuFqq9VcppgKwTHM43o9WX4L2VzQfERfy0kG37DZOK1NuZlfNRXt4Zsqz6Fm00PJB36k6.jpg',
   ];
 
@@ -84,6 +93,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative overflow-hidden">
+      <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
+      
       {/* Конфетти фон */}
       <div className="fixed inset-0 pointer-events-none z-10">
         {confetti.map((item) => (
@@ -118,187 +129,11 @@ export default function Home() {
 
       {/* Основной контент */}
       <div className={`relative z-20 transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        {/* Заголовок */}
-        <div className="text-center pt-12 pb-8 px-4">
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 bg-clip-text text-transparent animate-float" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
-            С Днём Рождения!
-          </h1>
-          <h2 className="text-4xl md:text-6xl font-semibold mb-6 text-pink-600" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
-            Валерия
-          </h2>
-          <div className="flex justify-center items-center gap-4 mb-8">
-            <div className="text-7xl">🎂</div>
-            <div className="text-5xl md:text-7xl font-bold text-pink-500">
-              {calculateAge()}
-            </div>
-            <div className="text-7xl">🎉</div>
-          </div>
-          <p className="text-xl md:text-2xl text-pink-700 max-w-3xl mx-auto leading-relaxed px-4">
-            Самое любимое моё солнышко! Любимая моя Лерочка!
-            Сегодня твой особенный день! 💕<br />
-            Ты делаешь мою жизнь ярче и счастливее каждый день, огромное спасибо тебе за это<br />
-            Желаю тебе всего самого лучшего, исполнения каждой мечты<br />
-            и бесконечного счастья! 🌸✨
-          </p>
-        </div>
-
-        {/* Секция с качествами */}
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="bg-gradient-to-br from-pink-100 to-pink-200 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
-              <div className="text-5xl mb-3">😊</div>
-              <h4 className="text-lg font-bold text-pink-700">Милая</h4>
-              <p className="text-sm text-pink-600 mt-2">Самая нежная и добрая</p>
-            </div>
-            <div className="bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
-              <div className="text-5xl mb-3">✨</div>
-              <h4 className="text-lg font-bold text-pink-700">Красивая</h4>
-              <p className="text-sm text-pink-600 mt-2">Красота внешняя и внутренняя</p>
-            </div>
-            <div className="bg-gradient-to-br from-pink-100 to-pink-300 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
-              <div className="text-5xl mb-3">🎨</div>
-              <h4 className="text-lg font-bold text-pink-700">Творческая</h4>
-              <p className="text-sm text-pink-600 mt-2">Полна идей и вдохновения</p>
-            </div>
-            <div className="bg-gradient-to-br from-pink-200 to-pink-400 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
-              <div className="text-5xl mb-3">💖</div>
-              <h4 className="text-lg font-bold text-pink-700">Любимая</h4>
-              <p className="text-sm text-pink-600 mt-2">Моя единственная и неповторимая</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Галерея фотографий */}
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-center mb-8 text-pink-600" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
-            Немного безумно красивых фотографий 📸
-          </h3>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {photos.map((photo, index) => (
-              <div
-                key={index}
-                className="group relative aspect-square overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105"
-                onClick={() => setSelectedImage(index)}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-pink-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                <Image
-                  src={photo}
-                  alt={`Фото ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Секция "Почему я тебя люблю" */}
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-center mb-10 text-pink-600" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
-            Почему я тебя люблю 💕
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">💝</span>
-                <div>
-                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твоя улыбка</h4>
-                  <p className="text-gray-700">Она освещает всё вокруг и делает мой день лучше</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">🌟</span>
-                <div>
-                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твоя доброта</h4>
-                  <p className="text-gray-700">Ты всегда готова помочь и поддержать в трудную минуту</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">✨</span>
-                <div>
-                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твой смех</h4>
-                  <p className="text-gray-700">Это самая прекрасная музыка для моих ушей</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">🎨</span>
-                <div>
-                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твоя уникальность</h4>
-                  <p className="text-gray-700">Ты одна такая, и я безумно счастлив, что ты рядом</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Пожелания */}
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-pink-200">
-            <h3 className="text-3xl md:text-4xl font-bold text-center mb-6 text-pink-600" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
-              Мои Пожелания Тебе 💝
-            </h3>
-            <div className="space-y-4 text-lg md:text-xl text-gray-700">
-              <p className="flex items-start gap-3">
-                <span className="text-3xl">🌟</span>
-                <span>Пусть каждый день приносит радость и новые открытия</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="text-3xl">💖</span>
-                <span>Будь всегда такой же красивой, нежной и классной</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="text-3xl">✨</span>
-                <span>Пусть Лёшка никогда не портит настроение</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="text-3xl">🎈</span>
-                <span>Оставайся всегда такой яркой и позитивной</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="text-3xl">🌸</span>
-                <span>Пусть жизнь дарит только приятные сюрпризы</span>
-              </p>
-            </div>
-            <div className="mt-8 text-center">
-              <p className="text-2xl md:text-3xl font-semibold text-pink-600">
-                Я люблю тебя! ❤️
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Кнопка с салютом */}
-        <div className="text-center py-8 px-4">
-          <button
-            onClick={triggerFireworks}
-            className="group relative px-8 py-4 bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 text-white text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-pink-500/50 transform hover:scale-105 transition-all duration-300 animate-pulse-slow"
-            style={{ fontFamily: 'var(--font-pacifico), cursive' }}
-          >
-            <span className="relative z-10">💝 Я тебя очень люблю 💝</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
-        </div>
-
-        {/* Романтическая цитата */}
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <div className="relative bg-gradient-to-r from-pink-100 via-pink-50 to-pink-100 rounded-3xl p-8 md:p-12 shadow-xl">
-            <div className="absolute -top-4 -left-4 text-6xl text-pink-300 opacity-50">"</div>
-            <div className="absolute -bottom-4 -right-4 text-6xl text-pink-300 opacity-50">"</div>
-            <p className="text-xl md:text-2xl text-center text-pink-800 italic font-medium leading-relaxed">
-              С тобой каждый день как праздник, каждая минута особенная, 
-              и каждое мгновение наполнено любовью и счастьем. 
-              Ты - мое всё! 💖
-            </p>
-          </div>
-        </div>
+        {currentPage === 'home' && <HomePage calculateAge={calculateAge} />}
+        {currentPage === 'about' && <AboutPage />}
+        {currentPage === 'gallery' && <GalleryPage photos={photos} onImageClick={setSelectedImage} />}
+        {currentPage === 'wishes' && <WishesPage />}
+        {currentPage === 'surprise' && <SurprisePage triggerFireworks={triggerFireworks} />}
 
         {/* Футер */}
         <div className="text-center py-12 px-4">
