@@ -105,6 +105,15 @@ export default function Home() {
         <div className="absolute top-20 left-10 w-32 h-32 bg-pink-200 rounded-full opacity-30 blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-pink-300 rounded-full opacity-30 blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         <div className="absolute top-1/2 left-1/2 w-36 h-36 bg-pink-100 rounded-full opacity-20 blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/3 right-20 w-28 h-28 bg-pink-400 rounded-full opacity-20 blur-3xl animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute bottom-1/3 left-20 w-32 h-32 bg-pink-200 rounded-full opacity-25 blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
+        
+        {/* Плавающие сердечки */}
+        <div className="absolute top-10 right-1/4 text-pink-300 text-4xl opacity-30 animate-float">💕</div>
+        <div className="absolute top-1/4 left-1/4 text-pink-400 text-3xl opacity-25 animate-float" style={{ animationDelay: '1s' }}>💖</div>
+        <div className="absolute bottom-1/4 right-1/3 text-pink-300 text-5xl opacity-20 animate-float" style={{ animationDelay: '2s' }}>💝</div>
+        <div className="absolute top-2/3 left-1/3 text-pink-200 text-4xl opacity-30 animate-float" style={{ animationDelay: '0.5s' }}>🌸</div>
+        <div className="absolute bottom-20 left-1/4 text-pink-400 text-3xl opacity-25 animate-float" style={{ animationDelay: '1.5s' }}>✨</div>
       </div>
 
       {/* Основной контент */}
@@ -133,6 +142,32 @@ export default function Home() {
           </p>
         </div>
 
+        {/* Секция с качествами */}
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div className="bg-gradient-to-br from-pink-100 to-pink-200 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
+              <div className="text-5xl mb-3">😊</div>
+              <h4 className="text-lg font-bold text-pink-700">Милая</h4>
+              <p className="text-sm text-pink-600 mt-2">Самая нежная и добрая</p>
+            </div>
+            <div className="bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
+              <div className="text-5xl mb-3">✨</div>
+              <h4 className="text-lg font-bold text-pink-700">Красивая</h4>
+              <p className="text-sm text-pink-600 mt-2">Красота внешняя и внутренняя</p>
+            </div>
+            <div className="bg-gradient-to-br from-pink-100 to-pink-300 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
+              <div className="text-5xl mb-3">🎨</div>
+              <h4 className="text-lg font-bold text-pink-700">Творческая</h4>
+              <p className="text-sm text-pink-600 mt-2">Полна идей и вдохновения</p>
+            </div>
+            <div className="bg-gradient-to-br from-pink-200 to-pink-400 rounded-3xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
+              <div className="text-5xl mb-3">💖</div>
+              <h4 className="text-lg font-bold text-pink-700">Любимая</h4>
+              <p className="text-sm text-pink-600 mt-2">Моя единственная и неповторимая</p>
+            </div>
+          </div>
+        </div>
+
         {/* Галерея фотографий */}
         <div className="max-w-7xl mx-auto px-4 py-12">
           <h3 className="text-3xl md:text-4xl font-bold text-center mb-8 text-pink-600" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
@@ -156,6 +191,51 @@ export default function Home() {
                 />
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Секция "Почему я тебя люблю" */}
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <h3 className="text-3xl md:text-4xl font-bold text-center mb-10 text-pink-600" style={{ fontFamily: 'var(--font-pacifico), cursive' }}>
+            Почему я тебя люблю 💕
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <span className="text-4xl">💝</span>
+                <div>
+                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твоя улыбка</h4>
+                  <p className="text-gray-700">Она освещает всё вокруг и делает мой день лучше</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <span className="text-4xl">🌟</span>
+                <div>
+                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твоя доброта</h4>
+                  <p className="text-gray-700">Ты всегда готова помочь и поддержать в трудную минуту</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <span className="text-4xl">✨</span>
+                <div>
+                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твой смех</h4>
+                  <p className="text-gray-700">Это самая прекрасная музыка для моих ушей</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-6 shadow-xl border-l-4 border-pink-400 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <span className="text-4xl">🎨</span>
+                <div>
+                  <h4 className="text-xl font-bold text-pink-700 mb-2">Твоя уникальность</h4>
+                  <p className="text-gray-700">Ты одна такая, и я безумно счастлив, что ты рядом</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -205,6 +285,19 @@ export default function Home() {
             <span className="relative z-10">💝 Я тебя очень люблю 💝</span>
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
+        </div>
+
+        {/* Романтическая цитата */}
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <div className="relative bg-gradient-to-r from-pink-100 via-pink-50 to-pink-100 rounded-3xl p-8 md:p-12 shadow-xl">
+            <div className="absolute -top-4 -left-4 text-6xl text-pink-300 opacity-50">"</div>
+            <div className="absolute -bottom-4 -right-4 text-6xl text-pink-300 opacity-50">"</div>
+            <p className="text-xl md:text-2xl text-center text-pink-800 italic font-medium leading-relaxed">
+              С тобой каждый день как праздник, каждая минута особенная, 
+              и каждое мгновение наполнено любовью и счастьем. 
+              Ты - мое всё! 💖
+            </p>
+          </div>
         </div>
 
         {/* Футер */}
